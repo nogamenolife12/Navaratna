@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navaratna - Vedic Gemstone Recommendation Engine</title>
+  <meta name="description" content="Discover your auspicious Vedic gemstones (Navaratna) based on Hindu mythology, planetary rulers, and your birth zodiac (Rashi) to balance your cosmic energies.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Ambient Cosmic Background -->
+  <div class="cosmic-bg">
+    <div class="stars"></div>
+    <div class="nebula nebula-1"></div>
+    <div class="nebula nebula-2"></div>
+  </div>
+
+  <!-- App Header -->
+  <header class="app-header">
+    <div class="header-container">
+      <div class="logo-area" id="logo-button" role="button" tabindex="0">
+        <span class="logo-icon">✨</span>
+        <h1 class="logo-title">Navaratna</h1>
+      </div>
+      <nav class="app-nav">
+        <button id="nav-home" class="nav-btn active">Home</button>
+        <button id="nav-codex" class="nav-btn">Navaratna Codex</button>
+        <button id="nav-quiz" class="nav-btn btn-primary">Seek Gemstone</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content Area -->
+  <main class="app-main-content">
+    
+    <!-- SECTION 1: Landing Screen -->
+    <section id="screen-landing" class="screen active">
+      <div class="hero-section">
+        <div class="hero-content">
+          <span class="hero-tagline">Vedic Astrology & Cosmic Energies</span>
+          <h2 class="hero-title">Harmonize Your Life with Sacred Gemstones</h2>
+          <p class="hero-desc">
+            For millennia, Vedic sages (Rishis) have mapped the cosmic vibrations of the Navagrahas (nine planets) to the Navaratnas (nine sacred gemstones). Discover the stones alignment with your life, destiny, and goals.
+          </p>
+          <div class="hero-actions">
+            <button id="btn-start-quiz" class="btn btn-gold btn-large">Find My Gemstone</button>
+            <button id="btn-view-codex" class="btn btn-outline btn-large">Explore the Codex</button>
+          </div>
+        </div>
+        
+        <!-- Interactive Gemstone Circle Showcase -->
+        <div class="hero-showcase">
+          <div class="gem-circle-container">
+            <div class="gem-orbit-center">
+              <span class="center-symbol">🕉️</span>
+            </div>
+            <!-- The 9 gems will float in an orbit -->
+            <div class="orbiting-gem gem-1" data-gem="ruby" title="Ruby (Manikya)">💎</div>
+            <div class="orbiting-gem gem-2" data-gem="pearl" title="Pearl (Moti)">💎</div>
+            <div class="orbiting-gem gem-3" data-gem="coral" title="Red Coral (Moonga)">💎</div>
+            <div class="orbiting-gem gem-4" data-gem="emerald" title="Emerald (Panna)">💎</div>
+            <div class="orbiting-gem gem-5" data-gem="yellow-sapphire" title="Yellow Sapphire (Pukhraj)">💎</div>
+            <div class="orbiting-gem gem-6" data-gem="diamond" title="Diamond (Heera)">💎</div>
+            <div class="orbiting-gem gem-7" data-gem="blue-sapphire" title="Blue Sapphire (Neelam)">💎</div>
+            <div class="orbiting-gem gem-8" data-gem="hessonite" title="Hessonite (Gomed)">💎</div>
+            <div class="orbiting-gem gem-9" data-gem="cats-eye" title="Cat's Eye (Lehsuniya)">💎</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mythology Highlight Section -->
+      <div class="mythology-teaser">
+        <h3 class="teaser-title">The Legend of Vala</h3>
+        <p class="teaser-text">
+          According to the ancient <em>Garuda Purana</em>, the Navaratnas originated from the sacrifice of the mighty cosmic demon Vala. His body parts transformed into the seedbeds of sacred stones, each absorbing the rays and essence of specific planets. Explore their tales, powers, and rituals inside.
+        </p>
+      </div>
+    </section>
+
+    <!-- SECTION 2: Quiz Screen -->
+    <section id="screen-quiz" class="screen">
+      <div class="quiz-container glass-card">
+        <!-- Progress bar -->
+        <div class="quiz-progress-bar">
+          <div id="quiz-progress" class="quiz-progress-fill" style="width: 25%;"></div>
+        </div>
+        
+        <!-- Quiz Steps -->
+        <div class="quiz-steps-wrapper">
+          <!-- Step 1: User Profile -->
+          <div class="quiz-step active" data-step="1">
+            <h3 class="step-title">Who seeks the counsel of the Stars?</h3>
+            <p class="step-desc">Enter your name and details to begin the cosmological alignment.</p>
+            <div class="input-group">
+              <label for="user-name">Your Name</label>
+              <input type="text" id="user-name" class="form-input" placeholder="e.g. Arjuna" required autocomplete="name">
+            </div>
+            <div class="quiz-step-actions">
+              <button class="btn btn-gold btn-next-step" data-next="2">Continue</button>
+            </div>
+          </div>
+
+          <!-- Step 2: Rashi / Zodiac Sign -->
+          <div class="quiz-step" data-step="2">
+            <h3 class="step-title">Select your Rashi (Moon Sign / Zodiac)</h3>
+            <p class="step-desc">If you don't know your Rashi, select your Western Zodiac sign. In Vedic Jyotish, this represents your mind and emotional nature.</p>
+            
+            <div class="rashi-grid">
+              <label class="rashi-card" for="rashi-mesha">
+                <input type="radio" name="user-rashi" id="rashi-mesha" value="Mesha" checked>
+                <div class="rashi-card-content">
+                  <span class="rashi-symbol">♈</span>
+                  <span class="rashi-name">Mesha (Aries)</span>
+                  <span class="rashi-ruler">Mars</span>
+                </div>
+              </label>
+              <label class="rashi-card" for="rashi-vrishabha">
+                <input type="radio" name="user-rashi" id="rashi-vrishabha" value="Vrishabha">
+                <div class="rashi-card-content">
+                  <span class="rashi-symbol">♉</span>
+                  <span class="rashi-name">Vrishabha (Taurus)</span>
+                  <span class="rashi-ruler">Venus</span>
+                </div>
+              </label>
+              <label class="rashi-card" for="rashi-mithuna">
+                <input type="radio" name="user-rashi" id="rashi-mithuna" value="Mithuna">
+                <div class="rashi-card-content">
+                  <span class="rashi-symbol">♊</span>
+                  <span class="rashi-name">Mithuna (Gemini)</span>
+                  <span class="rashi-ruler">Mercury</span>
+                </div>
+              </label>
+              <label class="rashi-card" for="rashi-karka">
+                <input type="radio" name="user-rashi" id="rashi-karka" value="Karka">
+                <div class="rashi-card-content">
+                  <span class="rashi-symbol">♋</span>
+                  <span class="rashi-name">Karka (Cancer)</span>
+                  <span class="rashi-ruler">Moon</span>
+                </div>
+              </label>
+              <label class="rashi-card" for="rashi-simha">
+                <input type="radio" name="user-rashi" id="rashi-simha" value="Simha">
+                <div class="rashi-card-content">
+                  <span class="rashi-symbol">♌</span>
+                  <span class="rashi-name">Simha (Leo)</span>
+                  <span class="rashi-ruler">Sun</span>
+                </div>
+              </label>
+              <label class="rashi-card" for="rashi-kanya">
+                <input type="radio" name="user-rashi" id="rashi-kanya" value="Kanya">
+                <div class="rashi-card-content">
+                  <span class="rashi-symbol">♍</span>
+                  <span class="rashi-name">Kanya (Virgo)</span>
+                  <span class="rashi-ruler">Mercury</span>
+                </div>
+              </label>
+              <label class="rashi-card" for="rashi-tula">
+                <input type="radio" name="user-rashi" id="rashi-tula" value="Tula">
+                <div class="rashi-card-content">
+                  <span class="rashi-symbol">♎</span>
+                  <span class="rashi-name">Tula (Libra)</span>
+                  <span class="rashi-ruler">Venus</span>
+                </div>
+              </label>
+              <label class="rashi-card" for="rashi-vrishchika">
+                <input type="radio" name="user-rashi" id="rashi-vrishchika" value="Vrishchika">
+                <div class="rashi-card-content">
+                  <span class="rashi-symbol">♏</span>
+                  <span class="rashi-name">Vrishchika (Scorpio)</span>
+                  <span class="rashi-ruler">Mars</span>
+                </div>
+              </label>
+              <label class="rashi-card" for="rashi-dhanu">
+                <input type="radio" name="user-rashi" id="rashi-dhanu" value="Dhanu">
+                <div class="rashi-card-content">
+                  <span class="rashi-symbol">♐</span>
+                  <span class="rashi-name">Dhanu (Sagittarius)</span>
+                  <span class="rashi-ruler">Jupiter</span>
+                </div>
+              </label>
+              <label class="rashi-card" for="rashi-makara">
+                <input type="radio" name="user-rashi" id="rashi-makara" value="Makara">
+                <div class="rashi-card-content">
+                  <span class="rashi-symbol">♑</span>
+                  <span class="rashi-name">Makara (Capricorn)</span>
+                  <span class="rashi-ruler">Saturn</span>
+                </div>
+              </label>
+              <label class="rashi-card" for="rashi-kumbha">
+                <input type="radio" name="user-rashi" id="rashi-kumbha" value="Kumbha">
+                <div class="rashi-card-content">
+                  <span class="rashi-symbol">♒</span>
+                  <span class="rashi-name">Kumbha (Aquarius)</span>
+                  <span class="rashi-ruler">Saturn</span>
+                </div>
+              </label>
+              <label class="rashi-card" for="rashi-meena">
+                <input type="radio" name="user-rashi" id="rashi-meena" value="Meena">
+                <div class="rashi-card-content">
+                  <span class="rashi-symbol">♓</span>
+                  <span class="rashi-name">Meena (Pisces)</span>
+                  <span class="rashi-ruler">Jupiter</span>
+                </div>
+              </label>
+            </div>
+
+            <div class="quiz-step-actions">
+              <button class="btn btn-outline btn-prev-step" data-prev="1">Back</button>
+              <button class="btn btn-gold btn-next-step" data-next="3">Continue</button>
+            </div>
+          </div>
+
+          <!-- Step 3: Life Focus / Desires -->
+          <div class="quiz-step" data-step="3">
+            <h3 class="step-title">What is your primary focus in life right now?</h3>
+            <p class="step-desc">Which area of life do you wish to enhance or require cosmic assistance with?</p>
+            
+            <div class="options-vertical">
+              <label class="option-row" for="focus-wealth">
+                <input type="radio" name="user-focus" id="focus-wealth" value="wealth" checked>
+                <div class="option-row-content">
+                  <span class="option-icon">💰</span>
+                  <div>
+                    <span class="option-label">Wealth, Business & Career</span>
+                    <span class="option-sub">Attract abundance, clear business blocks, and scale professional growth.</span>
+                  </div>
+                </div>
+              </label>
+              <label class="option-row" for="focus-health">
+                <input type="radio" name="user-focus" id="focus-health" value="health">
+                <div class="option-row-content">
+                  <span class="option-icon">💪</span>
+                  <div>
+                    <span class="option-label">Health, Vitality & Courage</span>
+                    <span class="option-sub">Boost physical energy, improve immune systems, and build fearlessness.</span>
+                  </div>
+                </div>
+              </label>
+              <label class="option-row" for="focus-love">
+                <input type="radio" name="user-focus" id="focus-love" value="love">
+                <div class="option-row-content">
+                  <span class="option-icon">❤️</span>
+                  <div>
+                    <span class="option-label">Relationships, Love & Harmony</span>
+                    <span class="option-sub">Enhance personal charisma, restore marriage peace, and attract partnership.</span>
+                  </div>
+                </div>
+              </label>
+              <label class="option-row" for="focus-peace">
+                <input type="radio" name="user-focus" id="focus-peace" value="peace">
+                <div class="option-row-content">
+                  <span class="option-icon">🧘</span>
+                  <div>
+                    <span class="option-label">Mental Peace, Focus & Intuition</span>
+                    <span class="option-sub">Soothe anxiety, master restless thoughts, and unlock spiritual growth.</span>
+                  </div>
+                </div>
+              </label>
+              <label class="option-row" for="focus-protection">
+                <input type="radio" name="user-focus" id="focus-protection" value="protection">
+                <div class="option-row-content">
+                  <span class="option-icon">🛡️</span>
+                  <div>
+                    <span class="option-label">Protection & Warding Off Obstacles</span>
+                    <span class="option-sub">Guard against negative forces, sudden losses, and constant delays (Sade Sati / Rahu dasha).</span>
+                  </div>
+                </div>
+              </label>
+            </div>
+
+            <div class="quiz-step-actions">
+              <button class="btn btn-outline btn-prev-step" data-prev="2">Back</button>
+              <button class="btn btn-gold btn-next-step" data-next="4">Continue</button>
+            </div>
+          </div>
+
+          <!-- Step 4: Current Temperament / Energy Blockages -->
+          <div class="quiz-step" data-step="4">
+            <h3 class="step-title">How would you describe your current energy block?</h3>
+            <p class="step-desc">Vedic gemstones act as filters to amplify or mitigate current energetic blockages.</p>
+            
+            <div class="options-vertical">
+              <label class="option-row" for="block-anxiety">
+                <input type="radio" name="user-block" id="block-anxiety" value="anxiety" checked>
+                <div class="option-row-content">
+                  <span class="option-icon">🌪️</span>
+                  <div>
+                    <span class="option-label">Anxious, Moody, or Restless</span>
+                    <span class="option-sub">Emotions fluctuating easily, feeling unsteady, or sleepless.</span>
+                  </div>
+                </div>
+              </label>
+              <label class="option-row" for="block-fatigue">
+                <input type="radio" name="user-block" id="block-fatigue" value="fatigue">
+                <div class="option-row-content">
+                  <span class="option-icon">🔋</span>
+                  <div>
+                    <span class="option-label">Low Vitality, Procrastination, or Fatigue</span>
+                    <span class="option-sub">Lacking the drive to take action, feeling physically drained.</span>
+                  </div>
+                </div>
+              </label>
+              <label class="option-row" for="block-miscommunication">
+                <input type="radio" name="user-block" id="block-miscommunication" value="miscommunication">
+                <div class="option-row-content">
+                  <span class="option-icon">🗣️</span>
+                  <div>
+                    <span class="option-label">Speech, Memory, or Expression Blocks</span>
+                    <span class="option-sub">Struggling to articulate ideas, poor concentration, or losing deals.</span>
+                  </div>
+                </div>
+              </label>
+              <label class="option-row" for="block-misfortune">
+                <input type="radio" name="user-block" id="block-misfortune" value="misfortune">
+                <div class="option-row-content">
+                  <span class="option-icon">🧱</span>
+                  <div>
+                    <span class="option-label">Delays, Bad Luck, or Hidden Enemies</span>
+                    <span class="option-sub">Enduring unexplained delays, feeling blocked by competitors, or negative patterns.</span>
+                  </div>
+                </div>
+              </label>
+              <label class="option-row" for="block-isolation">
+                <input type="radio" name="user-block" id="block-isolation" value="isolation">
+                <div class="option-row-content">
+                  <span class="option-icon">🌫️</span>
+                  <div>
+                    <span class="option-label">Confusion, Illusions, or Lack of Focus</span>
+                    <span class="option-sub">Feeling lost, disconnected, or clouded in judgment.</span>
+                  </div>
+                </div>
+              </label>
+            </div>
+
+            <div class="quiz-step-actions">
+              <button class="btn btn-outline btn-prev-step" data-prev="3">Back</button>
+              <button id="btn-submit-quiz" class="btn btn-gold">Reveal My Gemstones</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: Recommendation Results Screen -->
+    <section id="screen-recommendation" class="screen">
+      <div class="recommendation-header">
+        <h2 class="rec-title">Cosmic Recommendation for <span id="rec-user-name">Arjuna</span></h2>
+        <p class="rec-subtitle">Calculated by aligning your Rashi (<span id="rec-rashi">Mesha</span>) and current aspirations.</p>
+      </div>
+
+      <div class="recommendation-grid">
+        <!-- Primary Gemstone Card -->
+        <div class="rec-card primary-gem-card glass-card" id="rec-primary-card">
+          <div class="card-badge">Primary Lifeforce Stone</div>
+          <div class="rec-gem-visual" id="rec-primary-visual">
+            <span class="visual-glow"></span>
+            <span class="visual-gem-icon">💎</span>
+          </div>
+          <h3 class="rec-gem-name" id="rec-primary-name">Ruby (Manikya)</h3>
+          <p class="rec-gem-sub" id="rec-primary-sub">Ruler: Sun | Planet of the Soul</p>
+          
+          <div class="rec-gem-details">
+            <div class="detail-item">
+              <span class="item-label">Astrological Role</span>
+              <span class="item-value" id="rec-primary-role">Strengthens your core vitality, boosts authority, and aligns with your Leo ascendant.</span>
+            </div>
+            <div class="detail-item">
+              <span class="item-label">Mitigates</span>
+              <span class="item-value" id="rec-primary-mitigates">Lack of self-esteem, fatigue, and issues with authority figures.</span>
+            </div>
+          </div>
+          
+          <div class="card-actions">
+            <button class="btn btn-gold btn-view-details" data-stone="" id="btn-primary-details">View Lore & Rules</button>
+            <button class="btn btn-outline btn-activate-gem" data-stone="" id="btn-primary-activate">Activate Gemstone</button>
+          </div>
+        </div>
+
+        <!-- Secondary/Supportive Gemstone Card -->
+        <div class="rec-card secondary-gem-card glass-card" id="rec-secondary-card">
+          <div class="card-badge">Remedial/Supportive Stone</div>
+          <div class="rec-gem-visual" id="rec-secondary-visual">
+            <span class="visual-glow"></span>
+            <span class="visual-gem-icon">💎</span>
+          </div>
+          <h3 class="rec-gem-name" id="rec-secondary-name">Yellow Sapphire (Pukhraj)</h3>
+          <p class="rec-gem-sub" id="rec-secondary-sub">Ruler: Jupiter | Planet of Wisdom & Wealth</p>
+          
+          <div class="rec-gem-details">
+            <div class="detail-item">
+              <span class="item-label">Supportive Purpose</span>
+              <span class="item-value" id="rec-secondary-role">Acts as an amplifier for your career goals, bringing good fortune, wisdom, and business success.</span>
+            </div>
+            <div class="detail-item">
+              <span class="item-label">Mitigates</span>
+              <span class="item-value" id="rec-secondary-mitigates">Financial blocks, poor decision making, and career stagnation.</span>
+            </div>
+          </div>
+          
+          <div class="card-actions">
+            <button class="btn btn-gold btn-view-details" data-stone="" id="btn-secondary-details">View Lore & Rules</button>
+            <button class="btn btn-outline btn-activate-gem" data-stone="" id="btn-secondary-activate">Activate Gemstone</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="recommendation-footer">
+        <button id="btn-rec-to-codex" class="btn btn-large btn-outline">Explore Other Navaratnas</button>
+        <button id="btn-retake-quiz" class="btn btn-large btn-link">Seek Alignment Again</button>
+      </div>
+    </section>
+
+    <!-- SECTION 4: Navaratna Codex Screen -->
+    <section id="screen-codex" class="screen">
+      <div class="codex-header">
+        <h2 class="codex-title">The Navaratna Codex</h2>
+        <p class="codex-subtitle">Explore the history, astrology, warnings, and mythological lore of the nine sacred gemstones.</p>
+        
+        <!-- Search and Filter Controls -->
+        <div class="codex-controls glass-card">
+          <div class="search-box">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="codex-search" placeholder="Search by name, planet, or zodiac...">
+          </div>
+          <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">All Gems</button>
+            <button class="filter-btn" data-filter="benefic">Benefic Planets</button>
+            <button class="filter-btn" data-filter="shadow">Shadow Planets (Node)</button>
+            <button class="filter-btn" data-filter="powerful">Highly Active</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gemstones Grid -->
+      <div class="codex-grid" id="codex-grid-container">
+        <!-- Dynamic Gemstone Cards will be inserted here by app.js -->
+      </div>
+    </section>
+
+    <!-- SECTION 5: Ritual Simulator Screen -->
+    <section id="screen-simulator" class="screen">
+      <div class="simulator-layout">
+        <!-- Simulator Left: The Ritual Space -->
+        <div class="sim-left glass-card">
+          <h2 class="sim-title">Gemstone Activation Ritual</h2>
+          <p class="sim-subtitle">Simulate the Vedic purification and energizing steps to align the gemstone with your energy field.</p>
+          
+          <div class="ritual-pedestal-container">
+            <div class="ritual-pedestal">
+              <!-- Animated Liquid/Cleansing area -->
+              <div id="cleanse-liquid" class="cleanse-liquid"></div>
+              
+              <!-- Selected Gemstone visual -->
+              <div id="sim-gemstone" class="sim-gemstone-glow">
+                <span class="sim-glow-effect"></span>
+                <span class="sim-gem-icon">💎</span>
+              </div>
+            </div>
+            
+            <!-- Ritual Atmosphere Effects -->
+            <div class="incense-smoke smoke-left"></div>
+            <div class="incense-smoke smoke-right"></div>
+            <div class="sacred-diya">🪔</div>
+          </div>
+
+          <div class="ritual-controls">
+            <!-- Step Indicators -->
+            <div class="ritual-steps-nav">
+              <div class="rit-step-dot active" data-step="1">1. Purify</div>
+              <div class="rit-step-dot" data-step="2">2. Energize</div>
+              <div class="rit-step-dot" data-step="3">3. Wear</div>
+            </div>
+
+            <!-- Panel Contents -->
+            <div class="ritual-panel-content">
+              
+              <!-- Step 1 Pane: Purification -->
+              <div class="ritual-pane active" id="pane-purification">
+                <h4>Step 1: Purification (Shuddhikaran)</h4>
+                <p>Gemstones absorb energies during mining, transport, and handling. We must purify the stone in raw cow milk and sacred Ganga water (simulated).</p>
+                <div class="liquid-selector">
+                  <button id="btn-pour-milk" class="btn btn-outline">🥛 Pour Milk</button>
+                  <button id="btn-pour-water" class="btn btn-outline">💧 Pour Ganga Water</button>
+                </div>
+                <div class="purification-progress-area">
+                  <div class="progress-label">Cleansing Status: <span id="cleansing-status">Awaiting Purification</span></div>
+                  <div class="progress-bar-small"><div id="cleansing-progress" class="progress-fill-small"></div></div>
+                </div>
+                <button id="btn-finish-step1" class="btn btn-gold" disabled>Proceed to Energizing</button>
+              </div>
+
+              <!-- Step 2 Pane: Energize (Mantra Chanting) -->
+              <div class="ritual-pane" id="pane-energize">
+                <h4>Step 2: Energization (Prana Pratishtha)</h4>
+                <p>Awaken the planetary deity within the stone by reciting the planetary seed (Beej) mantra. Vedic tradition recommends chanting this 108 times on the specific day.</p>
+                
+                <div class="mantra-display glass-card">
+                  <p class="mantra-text-sanskrit" id="sim-mantra-sanskrit">ॐ ह्रां ह्रीं ह्रौं सः सूर्याय नमः</p>
+                  <p class="mantra-text-translit" id="sim-mantra-translit">"Om Hraam Hreem Hroum Sah Suryaya Namah"</p>
+                </div>
+
+                <div class="chanting-interface">
+                  <button id="btn-chant" class="btn btn-large btn-gold">Chant Mantra (Tap)</button>
+                  <div class="chant-counter">Chants: <span id="chant-count">0</span> / 9</div>
+                </div>
+                
+                <div class="chant-prompt" id="chant-prompt-msg">Tap the button to recite the mantra. Feel the vibration.</div>
+                <button id="btn-finish-step2" class="btn btn-gold" disabled>Proceed to Wear</button>
+              </div>
+
+              <!-- Step 3 Pane: Wear -->
+              <div class="ritual-pane" id="pane-wear">
+                <h4>Step 3: Wearing (Dharan Vidhi)</h4>
+                <p>The gemstone is now fully activated. Place it on the designated finger, on the auspicious day, using the correct metal setting.</p>
+                
+                <div class="wearing-rules-list">
+                  <div class="wear-rule">
+                    <span class="rule-icon">📅</span>
+                    <div>
+                      <span class="rule-label">Auspicious Day</span>
+                      <span class="rule-detail" id="sim-wear-day">Sunday Morning (Sunrise)</span>
+                    </div>
+                  </div>
+                  <div class="wear-rule">
+                    <span class="rule-icon">🖐️</span>
+                    <div>
+                      <span class="rule-label">Correct Finger</span>
+                      <span class="rule-detail" id="sim-wear-finger">Right Hand Ring Finger</span>
+                    </div>
+                  </div>
+                  <div class="wear-rule">
+                    <span class="rule-icon">🔩</span>
+                    <div>
+                      <span class="rule-label">Auspicious Metal</span>
+                      <span class="rule-detail" id="sim-wear-metal">Gold / Copper</span>
+                    </div>
+                  </div>
+                </div>
+
+                <button id="btn-wear-gem" class="btn btn-gold btn-large">Wear Activated Gemstone</button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Simulator Right: Gemstone Mythology & Warnings -->
+        <div class="sim-right glass-card">
+          <h3>Stone Wisdom</h3>
+          <div class="sim-stone-summary">
+            <h4 id="sim-info-name">Ruby</h4>
+            <p id="sim-info-ruler">Planetary Lord: Sun (Surya)</p>
+            <hr>
+            <h5>Ancient Mythology</h5>
+            <p id="sim-info-myth">The ruby represents the cosmic blood of the demon Vala, which was scattered across the realm. It embodies the majestic power, heat, and glowing life force of the Sun God, Surya.</p>
+            
+            <h5>Critical Caution (Pratibaadh)</h5>
+            <p id="sim-info-caution" class="warning-text">Do not wear Ruby if you are wearing Diamond, Blue Sapphire, or Hessonite, as the Sun has deep planetary enmity with Venus, Saturn, and Rahu.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Gemstone Codex Dialog (Modal popup) -->
+  <dialog id="codex-dialog" class="codex-detail-dialog glass-card">
+    <div class="dialog-header">
+      <h3 id="dialog-gem-name" class="dialog-title">Ruby (Manikya)</h3>
+      <button class="dialog-close-btn" id="btn-close-dialog" aria-label="Close dialog">✕</button>
+    </div>
+    
+    <div class="dialog-body">
+      <div class="dialog-visual-column">
+        <div class="dialog-gem-visual" id="dialog-gem-glow">
+          <span class="dialog-glow-effect"></span>
+          <span class="dialog-gem-icon" id="dialog-gem-icon">💎</span>
+        </div>
+        <div class="quick-facts">
+          <div class="fact-row"><strong>Planet:</strong> <span id="dialog-fact-planet">Sun</span></div>
+          <div class="fact-row"><strong>Rashi Compatibility:</strong> <span id="dialog-fact-rashi">Leo (Simha)</span></div>
+          <div class="fact-row"><strong>Auspicious Day:</strong> <span id="dialog-fact-day">Sunday</span></div>
+          <div class="fact-row"><strong>Metal setting:</strong> <span id="dialog-fact-metal">Gold</span></div>
+          <div class="fact-row"><strong>Chant finger:</strong> <span id="dialog-fact-finger">Ring Finger</span></div>
+        </div>
+      </div>
+      
+      <div class="dialog-content-column">
+        <section class="dialog-section">
+          <h4>Astrological Power & Benefits</h4>
+          <p id="dialog-gem-benefits">Enhances confidence, leadership, immune health, and spiritual alignment. Clears heart blockages and improves standing in society.</p>
+        </section>
+
+        <section class="dialog-section">
+          <h4>Mythological Origin Story</h4>
+          <p id="dialog-gem-mythology">Born from the blood of the cosmic titan Vala, which spilled into Ravana's Lanka. The sun god Surya gathered the blood to form rubies, infusing them with solar fires.</p>
+        </section>
+
+        <section class="dialog-section">
+          <h4>Vedic Activation Ritual</h4>
+          <p>Cleanse in fresh cow milk and Ganga water. Chanting the beej mantra <strong id="dialog-gem-mantra">Om Hring Hraung Suryaya Namah</strong> 108 times at sunrise on Sunday facing east.</p>
+        </section>
+
+        <section class="dialog-section warning-section">
+          <h4>⚠️ Astrological Cautions (Enmities)</h4>
+          <p id="dialog-gem-caution">Never wear alongside Blue Sapphire, Diamond, or Hessonite. Ensure it does not have cracks, as flawed rubies can bring loss of reputation.</p>
+        </section>
+      </div>
+    </div>
+    
+    <div class="dialog-footer">
+      <button id="btn-dialog-activate" class="btn btn-gold">Activate this Stone</button>
+    </div>
+  </dialog>
+
+  <!-- Success Overlay for simulator completion -->
+  <div id="success-overlay" class="success-overlay">
+    <div class="success-card glass-card">
+      <span class="success-icon">✨</span>
+      <h3>Cosmic Alignment Complete</h3>
+      <p id="success-message">The Ruby is now activated and bonded to your life force. May the Sun (Surya) shine favor, courage, and vitality upon your path, Arjuna!</p>
+      <button id="btn-close-success" class="btn btn-gold">Return to Codex</button>
+    </div>
+  </div>
+
+  <!-- JavaScript Module -->
+  <script type="module" src="app.js"></script>
+</body>
+</html>
